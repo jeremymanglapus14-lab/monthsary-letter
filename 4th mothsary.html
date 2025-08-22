@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Happy Monthsary 💌🌼</title>
+<style>
+  :root{
+    --bg1:#ff9aa2; --bg2:#fad0c4;
+    --env:#fff; --env-front:#ffe3e8;
+    --flap:#ffb3c1; --accent:#ff6f91;
+    --text:#533b4d; --daisy-center:#ffd700; --daisy-petal:#fff;
+  }
+  * { box-sizing: border-box; }
+  body{
+    margin:0; min-height:100vh; display:grid; place-items:center;
+    background: linear-gradient(135deg, var(--bg1), var(--bg2));
+    font-family: Arial, sans-serif; color:var(--text); overflow:hidden;
+  }
+  .wrap{
+    display:grid; gap:18px; justify-items:center;
+    padding:24px; position:relative; z-index:5;
+  }
+  .hint{ font-size:0.95rem; opacity:.9; text-align:center; }
+
+  .envelope{
+    position:relative; width:min(92vw, 520px); aspect-ratio:4/3;
+    cursor:pointer; filter: drop-shadow(0 20px 45px rgba(0,0,0,.18));
+    perspective:1200px;
+  }
+  .back{ position:absolute; inset:0; background:var(--env); border-radius:22px; }
+  .letter{
+    position:absolute; left:6%; right:6%; bottom:8%; height:72%;
+    background:#fff; border-radius:14px; padding:20px 22px;
+    transform: translateY(38%); transition: transform .8s cubic-bezier(.2,.8,.2,1);
+    box-shadow:0 8px 24px rgba(0,0,0,.12);
+    display:flex; flex-direction:column; gap:10px;
+    opacity:0;
+    overflow-y:auto;
+    max-height:100%;
+  }
+  .letter.reveal{
+    opacity:1;
+    transition: opacity 1s ease .5s, transform .8s cubic-bezier(.2,.8,.2,1);
+  }
+  .letter h2{ margin:0; font-size:1.35rem; color:#e2556d;}
+  .body{ line-height:1.55; font-size:1rem; text-align:justify; white-space:pre-line; }
+  .sig{ margin-top:auto; font-style:italic; opacity:.9;}
+
+  .front{ position:absolute; inset:auto 0 0 0; height:62%; background:var(--env-front); border-radius:0 0 22px 22px; }
+  .fold.left, .fold.right{ position:absolute; bottom:0; width:52%; height:62%; background:#ffd1da; }
+  .fold.left{ left:0; clip-path: polygon(0 100%, 0 0, 100% 100%);}
+  .fold.right{ right:0; clip-path: polygon(0 100%, 100% 0, 100% 100%);}
+  .flap{
+    position:absolute; left:0; right:0; top:0; height:58%;
+    transform-origin: top center; transform: rotateX(0deg);
+    transition: transform .8s cubic-bezier(.2,.8,.2,1);
+  }
+  .flap::before{
+    content:""; position:absolute; inset:0; background:var(--flap);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    border-top-left-radius:22px; border-top-right-radius:22px;
+  }
+  .seal{
+    position:absolute; top:42%; left:50%; transform:translate(-50%, -50%);
+    width:64px; height:64px; display:grid; place-items:center;
+    background:#fff; border-radius:50%;
+  }
+  .heart{ font-size:28px; color:var(--accent); animation: throb 1.2s infinite; }
+  @keyframes throb{0%,100%{transform:scale(1);}50%{transform:scale(1.2);} }
+
+  .envelope.open .flap{ transform: rotateX(175deg); }
+  .envelope.open .letter{ transform: translateY(-8%); }
+
+  .envelope.open .back,
+  .envelope.open .front,
+  .envelope.open .fold,
+  .envelope.open .flap,
+  .envelope.open .seal {
+    display: none;
+  }
+  .envelope.open .letter {
+    position: relative;
+    transform: translateY(0);
+    opacity: 1;
+    height: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 16px;
+    transition: all .8s ease;
+  }
+
+  .open-btn{
+    border:0; padding:12px 18px; border-radius:999px;
+    background:var(--accent); color:#fff; font-weight:600;
+    cursor:pointer; font-size:1rem;
+  }
+
+  .daisy{
+    position:absolute; 
+    width:60px; 
+    height:60px; 
+    display:flex;
+    align-items:center; 
+    justify-content:center; 
+    z-index:1;
+    animation: float 6s ease-in-out infinite alternate;
+  }
+  .petal{ 
+    position:absolute; 
+    width:20px; 
+    height:40px; 
+    background:var(--daisy-petal); 
+    border-radius:50%; 
+    transform-origin:center bottom; 
+  }
+  .petal:nth-child(1){ transform:rotate(0deg) translateY(-20px);}
+  .petal:nth-child(2){ transform:rotate(60deg) translateY(-20px);}
+  .petal:nth-child(3){ transform:rotate(120deg) translateY(-20px);}
+  .petal:nth-child(4){ transform:rotate(180deg) translateY(-20px);}
+  .petal:nth-child(5){ transform:rotate(240deg) translateY(-20px);}
+  .petal:nth-child(6){ transform:rotate(300deg) translateY(-20px);}
+  .center{ 
+    position:absolute; 
+    width:20px; 
+    height:20px; 
+    background:var(--daisy-center); 
+    border-radius:50%; 
+    top:50%; 
+    left:50%; 
+    transform:translate(-50%,-50%);
+  }
+
+  @keyframes float {
+    from { transform: translateY(0) rotate(0deg); }
+    to { transform: translateY(-20px) rotate(15deg); }
+  }
+</style>
+</head>
+<body>
+  <div class="daisy" style="top:10%; left:5%;"> <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="center"></div></div>
+  <div class="daisy" style="bottom:15%; right:8%;"> <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="center"></div></div>
+  <div class="daisy" style="top:70%; left:10%;"> <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="center"></div></div>
+  <div class="daisy" style="top:20%; right:20%;"> <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="center"></div></div>
+  <div class="daisy" style="bottom:25%; left:25%;"> <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="center"></div></div>
+  <div class="daisy" style="top:40%; left:80%;"> <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="center"></div></div>
+  <div class="daisy" style="top:85%; left:50%;"> <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="center"></div></div>
+  <div class="daisy" style="top:5%; right:35%;"> <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="center"></div></div>
+  <div class="daisy" style="bottom:5%; right:20%;"> <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="center"></div></div>
+  <div class="daisy" style="top:55%; left:5%;"> <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="center"></div></div>
+
+  <div class="wrap">
+    <div class="hint">Tap / click the envelope to open the letter 💌</div>
+    <div class="envelope" id="envelope">
+      <div class="back"></div>
+      <div class="letter" id="letter">
+        <h2>Happy 4th Monthsary, myloveeee! 🌼</h2>
+        <div class="body">
+Happy 4th Monthsary myloveeee, gumawa ako code sa html and naghanap din ako mga tutorial's sa tiktok since dami lumalabas nito sa fyp ko tas pinag aralan ko din pano gumawa ganto design code sa html tas yung mga functions pa, medyo complicated iexplain pero worth it na din kasi gusto ko gawin special month na to since hindi agad nakapag bati sayo national girlfriend day and gusto ko talaga bumawi ngaun kaya naisipan ko what better way pwede ko gawin for our 4th monthsary is to create a code sa html medyo pangit nga lang design ko since hindi ako magaling sa pagiging creative mindset pero sana magustuhan mo po lablab, medyo simple lang nagawa ko mga design sa daisy flowers tsaka hindi rin pantay petal flowers niya pero next time magiisip ako ano naman pwede ko pag aralan next month sa monthsary po natin. 
+
+Sana magustuhan mo po lablab hehe and sorry din dahil kahit simple bagay hindi ko magawa kahit habulin ko pag-bati sayo hindi ko nagawa, sorry talaga lablab kasi pinaramdam ko sayo mag-isa ka lang and thank you din po lablab sa patience mo kahit hindi mo na ako patawarin basta makita ko lang masaya ka and syempre hindi mo rin maramdam mag-isa ka po lablab. 
+
+Gusto ko rin sabihin sayo lablab na mahal na mahal kita sobra, dahil sayo palagi ako masaya tuwing kausap kita kahit bonding or nanonood tayo movies/anime nawawala sa isip ko yung mga problema ko tuwing kausap kita and syempre excited parin ako sa 1st date natin pag kailan ka free tas punta ako dyan pero sayang din hindi natuloy lipat ni papa sa work, gusto ko pa naman makasama ka kahit once a week or month plano ko date tayo kung nasa cavite ako tas pakilala kita kay mama at cochi tas pitchi, pero maybe next time pakilala kita pag legal na tayo nagiisip ako pano aayusin first impression sa parents mo pero maghahanda din ako pag dumating yung araw hanggang ngaun humihingi ako experience's nila about dun and syempre gusto ko din pagusapan sayo about legal stuff pag free ka deep talks dami ko gusto pagusapan pero maybe try ko sa monthsary natin after natin mag bonding. 
+
+iloveyouuuuuuusobraaaaaaaaa mywifeeeeeeee, promise gagawin ko po yung best ko mag improved para mapasaya kita, mwuahhhhhhhh mahal na mahal kitaaaaaaa myloveeeeeeee
+        </div>
+        <div class="sig">— Jeremiah 💖</div>
+      </div>
+      <div class="front"></div>
+      <div class="fold left"></div>
+      <div class="fold right"></div>
+      <div class="flap">
+        <div class="seal"><span class="heart">❤</span></div>
+      </div>
+    </div>
+    <button class="open-btn" id="toggleBtn">Open Letter</button>
+  </div>
+
+  <script>
+    const env = document.getElementById('envelope');
+    const btn = document.getElementById('toggleBtn');
+    const letter = document.getElementById('letter');
+
+    function toggleOpen(){
+      env.classList.toggle('open');
+      if(env.classList.contains('open')){
+        letter.classList.add('reveal');
+        btn.textContent = 'Close Letter';
+      } else {
+        letter.classList.remove('reveal');
+        btn.textContent = 'Open Letter';
+      }
+    }
+    env.addEventListener('click', toggleOpen);
+    btn.addEventListener('click', toggleOpen);
+  </script>
+</body>
+</html>
+
+
+
+
